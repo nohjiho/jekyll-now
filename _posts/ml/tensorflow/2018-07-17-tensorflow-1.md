@@ -5,7 +5,6 @@ comment: true
 ---
 
 #텐서플로우 알고리즘 종류
-![](../../../particle.jpg)
 
 ## 지도학습(Supervised Learning)
 
