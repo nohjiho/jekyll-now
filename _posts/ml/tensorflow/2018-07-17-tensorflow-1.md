@@ -38,7 +38,18 @@ comment: true
 **2. 선형회귀(Linear Regression)** : 선형회귀 분석은 변수들 사이의 관계를 분석하는데 사용하는 통계학적 방법이다. 이 방법의 장점은 알고리즘의 개념이 복잡하지 않고 다양한 문제에 폭 넓게 적용할 수 있다는 것이다.
 지도학습 중 가장 기본이 되는 알고리즘 중 하나이이며, 대용량 데이터셋 가능. 고차원 데이터에 적용 가능.
 
-**3. 로지스틱 회귀(Logistic Regression)** : 로지스틱 회귀는 많은 설명변수(explanatory variable, 회귀분석에서는 독립변수)가 있거나 이항결과(binomial outcome)를 모델링하는 강력한 통계방법이다. 누적 로지스틱 분포(cumulative logistic distribution)라는 로지스틱 함수를 사용하여 확률을 추정하여 범주형 종속 변수(dependent variable)와 하나 이상의 독립 변수(independent variable)간의 관계를 측정한다.
+**3. 로지스틱 회귀(Logistic Regression)**
+	- 분류에 사용하는 모델이다.
+	- 선형 함수 결과를 시그모이드 함수를 이용하여 0 ~ 1 사이로 압축한다.
+	- 이진 분류는 0.5보다 높을 때는 True, 그이하는 Flase로 하여 모델을 학습시킨다.
+	- 시그모이드 함수를 사용한 크로스 엔트로피 비용함수의 미분 결과는 선형 함수를 사용한 MSE 비용함수의 미분과 동일하다.
+	- 로지스틱 회귀는 다중 분류도 지원.
+	- 분류(Classification)
+		- 클래스 레이블을 예측한다.
+		- 출력 결과는 이산적이다.
+		- Binary Classification(이진 분류), Multiclass Classification(다중 분류)
+		- ex) 스팸분류 , 암 진단, 꽃의 품종 판별, 손글씨 숫자 분류
+
 일반적으로 회귀분석은 다음과 같은 실제 응용 프로그램에서 사용할 수 있다.
 - 신용 점수
 - 마케팅 캠페인의 성공률 측정
@@ -67,17 +78,26 @@ comment: true
 
 ### 중요 비지도 학습(Unsupervised learning) 알고리즘
 -  **군집**
--- **k-평균(k-Means)**
--- **계층 군집 분석(Hierarchical Cluster Analysis, HCA)**
--- **기댓값 최대화(Expectation Maximization)**
+	- **k-평균(k-Means)**
+	k-means는 클러스터링 문제를 풀기 위한 비감독 학습 알고리즘이다. 이 알고리즘은 간단한 방법으로 주어진 데이터를 지정된 클러스터 갯수(k)로 그룹핑한다. 한 클러스터 내의 데이터들은 동일한 성질을 가지며 다른 그룹에 대하여 구별된다. 즉 한 클러스터 내의 모든 엘리먼트들은 클러스터 밖의 데이터보다 더 닮아 있다.
+    
+    알고리즘의 결과는 센트로이드(centroid)라 불리는 K개의 포인트로서 서로 다른 그룹의 중심을 나타내며 데이터들은 K 클러스터 중 하나에만 속할 수 있다.한 클러스터 내의 모든 데이터들은 다른 센트로이드보다 자신의 센트로이드와의 거리가 더 가깝다.
+    
+    클러스터를 구성하는데 직접 에러 함수를 최소화하려면 계산 비용이 매우 많이든다. (NP-hard 문제로 알려져 있음) 그래서 스스로 로컬 최소값에 빠르게 수렴할 수 있는 방법들이 개발되어 왔다. 가장 널리 사용되는 방법은 몇번의 반복으로 수렴되는 반복 개선(iterative refinement) 테크닉이다.
+    
+	- **계층 군집 분석(Hierarchical Cluster Analysis, HCA)**
+	계층 군집은 비슷한 군집끼지 묶어가면서 최종적으로는 하나의 케이스가 될때까지 군집을 묶는 클러스터링 이다.
+    군집간의 거리를 기반으로 클러스터링을 하는 알고리즘이며, K Means와는 다르게 군집의 수를 미리 정해주지 않아도 된다.
+	- **기댓값 최대화(Expectation Maximization, EM)**
+	텐서플로우에서 제공하는지 확인 안됨.
 - **시각화(Visualization)와 차원 축소(Dimensionality reduction)**
--- **주성분 분석(Principal Component Analysis. PCA)**
--- **커널(kernel)**
--- **지역적 선형 임베딩(Locally-Linear Embedding. LLE)**
--- **t-SNE(t-distributed Stochastic Neigbor Embedding)**
+	- **주성분 분석(Principal Component Analysis. PCA)**
+	- **커널(kernel)**
+	- **지역적 선형 임베딩(Locally-Linear Embedding. LLE)**
+	- **t-SNE(t-distributed Stochastic Neigbor Embedding)**
 - **연관 규칙 학습(Association rule learning)**
--- **어프라이어리(Apriori)**
--- **이클렛(Eclat)**
+	- **어프라이어리(Apriori)**
+	- **이클렛(Eclat)**
 
 #### 군집(Clustering)
 블로그 방문자에 대한 데이터가 많이 있다고 하자. 비슷한 방문자들을 그룹으로 묶기 위해 군집 알고리즘을 적용하려 한다.(그림 1-8).
